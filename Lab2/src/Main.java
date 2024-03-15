@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -22,6 +23,126 @@ public class Main {
         System.out.println("c(x): ");
         int cx = inputInt();
         funkcjaCx(cx);
+        // Zadanie 3
+        sortowanieTablicy();
+        // Zadanie 4
+        trasaNaUczelnie();
+        // Zadanie 5
+        czyMoznaKupicSamochod();
+        // Zadanie 6
+        kalkulator();
+    }
+
+    public static void czyMoznaKupicSamochod() {
+        System.out.println("Czy jest zniżka na samochód (jest / nie ma): ");
+        String znizka = inputString();
+        System.out.println("Czy dostałeś premie? (tak dostałem / nie dosatałem): ");
+        String premia = inputString();
+        String znizkaJest = "jest", znizkaNieMa = "nie ma", premiaTak = "tak dostałem", premiaNie = "nie dostałem";
+        if (znizka.equals(znizkaJest) || premia.equals(premiaTak)) {
+            System.out.println("Możesz kupić samochód!");
+        } else if (znizka.equals(znizkaNieMa) && premia.equals(premiaTak)) {
+            System.out.println("Zniżki nie ma ale samochód możesz kupić");
+        } else if (znizka.equals(znizkaNieMa) || premia.equals(premiaNie)){
+            System.out.println("Niestety... zakup samochodu trzeba odłożyć na później...");
+        }
+    }
+
+    public static void kalkulator(){
+        System.out.println("Podaj dwie liczby: ");
+        double a = inputDouble(), b = inputDouble(), wynik = 0;
+        System.out.println("Jakie działanie chcesz wykonać: \n(dodawanie(+), odejmowanie(-), iloraz(*), iloczyn(/), reszta z dzielenia(%)) ");
+        String dzialanie = inputString();
+        switch (dzialanie) {
+            case "dodawanie":
+                wynik = a + b;
+                System.out.println("Wynik działania (a + b) to: " + wynik);
+                break;
+            case "+":
+                wynik = a + b;
+                System.out.println("Wynik działania (a + b) to: " + wynik);
+                break;
+            case "odejmowanie":
+                wynik = a - b;
+                System.out.println("Wynik działania (a - b) to: " + wynik);
+                break;
+            case "-":
+                wynik = a - b;
+                System.out.println("Wynik działania (a - b) to: " + wynik);
+                break;
+            case "iloraz":
+                wynik = a * b;
+                System.out.println("Wynik działania (a * b) to: " + wynik);
+                break;
+            case "*":
+                wynik = a * b;
+                System.out.println("Wynik działania (a * b) to: " + wynik);
+                break;
+            case "iloczyn":
+                wynik = a / b;
+                System.out.println("Wynik działania (a / b) to: " + wynik);
+                break;
+            case "/":
+                wynik = a / b;
+                System.out.println("Wynik działania (a / b) to: " + wynik);
+                break;
+            case "reszta z dzielenia":
+                wynik = a % b;
+                System.out.println("Wynik działania (a % b) to: " + wynik);
+                break;
+            case "%":
+                wynik = a % b;
+                System.out.println("Wynik działania (a % b) to: " + wynik);
+                break;
+            default:
+                break;
+        }
+    }
+
+    public static void trasaNaUczelnie(){
+        System.out.println("Jaka jest pogoda ('pada' / 'nie pada'): ");
+        String pogoda = inputString();
+        System.out.println("Czy jest autobus (jest autobus / nie ma autobusu): ");
+        String autobus = inputString();
+        String pogodaPada = "pada", pogodaNiePada = "nie pada", autobusJest = "jest autobus";
+        if (pogoda.equals(pogodaPada) && autobus.equals(autobusJest)) {
+            System.out.println("Weź parasol, dostaniesz się na uczelnie");
+        } else if (pogoda.equals(pogodaNiePada) && autobus.equals(autobusJest)) {
+            System.out.println("Dostaniesz się na uczelnie, miłego dnia i pięknej pogody");
+        } else {
+            System.out.println("Nie dostaniesz się na uczelnie");
+        }
+    }
+
+    public static void sortowanieTablicy(){
+        System.out.println("Podaj wielkość tablicy: ");
+        int x = inputInt();
+        int[] tab = new int[x];
+
+        for (int i = 0; i < tab.length; i ++){
+            System.out.println("Podaj " + (i+1) + " liczbę: ");
+            tab[i] = inputInt();
+        }
+
+        System.out.println("Twoje liczby to: " + tab[0] + ", " + tab[1] + ", " + tab[2]);
+        Arrays.sort(tab);
+
+        System.out.println("Posortowane liczby to: ");
+        for (int i = 0; i < tab.length; i++){
+            System.out.println(tab[i]);
+        }
+    }
+
+    public static double inputDouble() {
+        Scanner scanner = new Scanner(System.in);
+        double liczba = scanner.nextDouble();
+        return liczba;
+    }
+
+    public static String inputString(){
+        Scanner scanner = new Scanner(System.in);
+        String znaki = scanner.nextLine();
+        return znaki;
     }
 
     public static void funkcjaAx(int a){
